@@ -18,4 +18,9 @@ describe('index', function () {
         let input = 'the my you them';
         expect(index(input)).toEqual([{ my: 1 }, { the: 1 }, { them: 1 }, { you: 1 }]);
     });
+
+    it('should remove punctuation from input', function () {
+        let input = 'you, my. my; :?\'-()&$!'
+        expect(index(input)).toEqual([{ my: 2 }, { you: 1 }]);
+    });
 });
