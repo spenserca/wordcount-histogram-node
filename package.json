@@ -1,0 +1,21 @@
+{
+  "name": "wordcount-histogram-node",
+  "version": "1.0.0",
+  "description": "Gets the count of words in text and displays a histogram of the counts",
+  "main": "index.js",
+  "scripts": {
+    "test": "node runTests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spenserca/wordcount-histogram-node.git"
+  },
+  "author": "Spenser Andreassen",
+  "bugs": {
+    "url": "https://github.com/spenserca/wordcount-histogram-node/issues"
+  },
+  "homepage": "https://github.com/spenserca/wordcount-histogram-node#readme",
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  }
+}
