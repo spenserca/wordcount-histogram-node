@@ -6,12 +6,12 @@ module.exports = (input) => {
         .filter(s => s != '')
         .map(s => s.toUpperCase())
         .reduce((acc, value, index, array) => {
-            let word = acc.find(el => el.key == value);
-            if (!word) {
+            let existingWord = acc.find(el => el.key == value);
+            if (!existingWord) {
                 acc.push({ key: value, value: 1 });
             }
             else {
-                acc[acc.indexOf(word)].value++;
+                acc[acc.indexOf(existingWord)].value++;
             }
 
             return acc;
@@ -20,7 +20,7 @@ module.exports = (input) => {
         .slice(0, 10);
 }
 
-function greatestToLeastValue(a, b) {
+const greatestToLeastValue = (a, b) => {
     if (a.value === b.value) {
         return sortAlphabetically(a, b);
     }
@@ -28,6 +28,6 @@ function greatestToLeastValue(a, b) {
     return b.value - a.value;
 }
 
-function sortAlphabetically(a, b) {
+const sortAlphabetically = (a, b) => {
     return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
 }
