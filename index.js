@@ -5,10 +5,10 @@ module.exports = (input) => {
     const output = input.replace(/[^a-zA-Z\s]/g, ' ')
         .split(/\s/)
         .filter(s => s != '')
-        .reduce((acc, cv, ci, array) => {
-            let word = acc.find(el => el.key == cv.toUpperCase());
+        .reduce((acc, value, index, array) => {
+            let word = acc.find(el => el.key == value.toUpperCase());
             if (!word) {
-                acc.push({ key: cv.toUpperCase(), value: 1 });
+                acc.push({ key: value.toUpperCase(), value: 1 });
             }
             else {
                 acc[acc.indexOf(word)].value++;
@@ -16,28 +16,19 @@ module.exports = (input) => {
 
             return acc;
         }, [])
-        .sort(greatestToLeastValue)
-        .sort(alphabetically);
+        .sort(greatestToLeastValue);
 
     return output.slice(0, 10);
 }
 
 function greatestToLeastValue(a, b) {
-    if (a.value < b.value) {
-        return -1;
+    if (a.value === b.value) {
+        return sortAlphabetically(a, b);
     }
-    if (a.value > b.value) {
-        return 1;
-    }
-    return 0;
+
+    return b.value - a.value;
 }
 
-function alphabetically(a, b) {
-    if (a.key < b.key) {
-        return -1;
-    }
-    if (a.key > b.key) {
-        return 1;
-    }
-    return 0;
+function sortAlphabetically(a, b) {
+    return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
 }
