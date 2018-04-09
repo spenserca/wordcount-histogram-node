@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/spenserca/wordcount-histogram-node#readme",
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "jasmine": "3.1.0",
     "jasmine-console-reporter": "3.0.0",
     "jasmine-reporters": "2.3.0"

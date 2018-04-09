@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = (input) => {
-    const wordCounts = [];
-    const output = input.replace(/[^a-zA-Z\s]/g, ' ')
+    return input.replace(/[^a-zA-Z\s]/g, ' ')
         .split(/\s/)
         .filter(s => s != '')
+        .map(s => s.toUpperCase())
         .reduce((acc, value, index, array) => {
-            let word = acc.find(el => el.key == value.toUpperCase());
+            let word = acc.find(el => el.key == value);
             if (!word) {
-                acc.push({ key: value.toUpperCase(), value: 1 });
+                acc.push({ key: value, value: 1 });
             }
             else {
                 acc[acc.indexOf(word)].value++;
@@ -16,9 +16,8 @@ module.exports = (input) => {
 
             return acc;
         }, [])
-        .sort(greatestToLeastValue);
-
-    return output.slice(0, 10);
+        .sort(greatestToLeastValue)
+        .slice(0, 10);
 }
 
 function greatestToLeastValue(a, b) {
