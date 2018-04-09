@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = (input) => {
-    return input.replace(/[^a-zA-Z\s]/g, ' ')
+    let text = input ? input : 'one one two three four five six seven eight nine ten eleven';
+    return text.replace(/[^a-zA-Z\s]/g, ' ')
         .split(/\s/)
         .filter(s => s != '')
         .map(s => s.toUpperCase())
@@ -22,12 +23,13 @@ module.exports = (input) => {
 
 const greatestToLeastValue = (a, b) => {
     if (a.value === b.value) {
-        return sortAlphabetically(a, b);
+        return sortAlphabeticallyAsc(a, b);
     }
 
+    // Sort descending by value
     return b.value - a.value;
 }
 
-const sortAlphabetically = (a, b) => {
+const sortAlphabeticallyAsc = (a, b) => {
     return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
 }
