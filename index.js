@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (input) => {
+export default function (input) {
     let text = input ? input : 'one one two three four five six seven eight nine ten eleven';
     return text.replace(/[^a-zA-Z\s]/g, ' ')
         .split(/\s/)
@@ -14,7 +14,6 @@ module.exports = (input) => {
             else {
                 acc[acc.indexOf(existingWord)].value++;
             }
-
             return acc;
         }, [])
         .sort(byValueDescAlphaAsc)
@@ -28,8 +27,8 @@ const byValueDescAlphaAsc = (a, b) => {
 
     // Sort descending by value
     return b.value - a.value;
-}
+};
 
 const sortAlphabeticallyAsc = (a, b) => {
     return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
-}
+};
