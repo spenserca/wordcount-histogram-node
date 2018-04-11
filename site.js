@@ -15,7 +15,7 @@ module.exports = () => {
             labels: words,
             datasets: [{
                 label: '# of Words',
-                data: topTen.reduce(w => { return w.value }),
+                data: topTen.reduce(w => { return w.value; }),
                 backgroundColor: [
                     'white'
                 ],
