@@ -17,11 +17,11 @@ module.exports = (input) => {
 
             return acc;
         }, [])
-        .sort(greatestToLeastValue)
+        .sort(byValueDescAlphaAsc)
         .slice(0, 10);
 }
 
-const greatestToLeastValue = (a, b) => {
+const byValueDescAlphaAsc = (a, b) => {
     if (a.value === b.value) {
         return sortAlphabeticallyAsc(a, b);
     }
