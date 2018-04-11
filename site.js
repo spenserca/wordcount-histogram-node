@@ -1,38 +1,17 @@
 'use strict';
 
 const wordcounter = require('index.js');
+const Plotly = require('plotly.js');
 
 module.exports = () => {
-    var ctx = document.getElementById("chart");
-    const topTen = wordcounter();
-    const words = topTen.reduce(w => {
-        return w.key;
-    });
+    const words = wordcounter();
+    let words = words.reduce(w => w.key);
+    let counts = words.reduce(w => w.value);
+    let data = [{
+        x: words,
+        y: counts,
+        type: 'bar'
+    }];
 
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: words,
-            datasets: [{
-                label: '# of Words',
-                data: topTen.reduce(w => { return w.value }),
-                backgroundColor: [
-                    'white'
-                ],
-                borderColor: [
-                    'black'
-                ],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
+    return Plotly.newPlot('chart', data);
 }
