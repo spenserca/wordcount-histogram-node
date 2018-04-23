@@ -1,6 +1,6 @@
 'use strict';
 
-import index from "../index";
+const index = require('../index');
 
 describe('index', function () {
     it('should return 10 items', function () {

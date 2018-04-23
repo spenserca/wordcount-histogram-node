@@ -1,9 +1,9 @@
 'use strict';
 
-import Jasmine from "jasmine";
-import { JUnitXmlReporter } from "jasmine-reporters";
-import JasmineConsoleReporter from "jasmine-console-reporter";
-import { join } from "path";
+const Jasmine = require('jasmine');
+const reporters = require('jasmine-reporters');
+const JasmineConsoleReporter = require('jasmine-console-reporter');
+const path = require('path');
 
 const jasmine = new Jasmine();
 jasmine.loadConfig({
@@ -13,9 +13,9 @@ jasmine.loadConfig({
     ]
 });
 
-var junitReporter = new JUnitXmlReporter({
+var junitReporter = new reporters.JUnitXmlReporter({
     filePrefix: "TEST-",
-    savePath: join(__dirname, 'reports'),
+    savePath: path.join(__dirname, 'reports'),
     consolidateAll: false
 });
 

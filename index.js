@@ -1,23 +1,25 @@
 'use strict';
 
-export default function (input) {
+module.exports = function (input) {
     let text = input ? input : 'one one two three four five six seven eight nine ten eleven';
     return text.replace(/[^a-zA-Z\s]/g, ' ')
         .split(/\s/)
         .filter(s => s != '')
         .map(s => s.toUpperCase())
-        .reduce((acc, value, index, array) => {
-            let existingWord = acc.find(el => el.key == value);
-            if (!existingWord) {
-                acc.push({ key: value, value: 1 });
-            }
-            else {
-                acc[acc.indexOf(existingWord)].value++;
-            }
-            return acc;
-        }, [])
+        .reduce(updateExistingOrAddNewValues, [])
         .sort(byValueDescAlphaAsc)
         .slice(0, 10);
+}
+
+const updateExistingOrAddNewValues = (accumulator, value) => {
+    let existingWord = accumulator.find(el => el.key == value);
+    if (!existingWord) {
+        accumulator.push({ key: value, value: 1 });
+    }
+    else {
+        accumulator[accumulator.indexOf(existingWord)].value++;
+    }
+    return accumulator;
 }
 
 const byValueDescAlphaAsc = (a, b) => {
